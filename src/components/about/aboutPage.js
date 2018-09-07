@@ -1,8 +1,9 @@
 const React = require('react');
 
 const About = React.createClass({
-  render: () => (
-      <div>
+  render() {
+    return (
+      <div className="jumbotron">
         <h1>About</h1>
         <p>
           This application uses the following technologies:
@@ -17,7 +18,8 @@ const About = React.createClass({
           </ul>
         </p>
       </div>
-  )
+    );
+  }
 });
 
 module.exports = About;

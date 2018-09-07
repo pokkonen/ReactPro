@@ -1,15 +1,19 @@
 const React = require('react');
+const Router = require('react-router');
+
+const Link = Router.Link;
 
 const Header = React.createClass({
   render: () => (
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="collapse navbar-collapse">
-          <a href="/" className="navbar-brand">
-            <img className="w-25" src="images/pluralsight-logo.png" />
-          </a>
-          <ul className="nav navbar-nav">
-            <li className="nav-item active"><a className="nav-link" href="/">Home</a></li>
-            <li className="nav-item"><a className="nav-link" href="/#about">About</a></li>
+          <Link to="app" className="navbar-brand">
+            <img width="250" src="images/plu-logo.png" />
+          </Link>
+          <ul className="nav navbar-nav pl-5">
+            <li className="nav-item"><Link to="app" className="navbar-brand">Home</Link></li>
+            <li className="nav-item"><Link to="authors" className="navbar-brand">Authors</Link></li>
+            <li className="nav-item"><Link to="about" className="navbar-brand">About</Link></li>
           </ul>
         </div>
       </nav>
