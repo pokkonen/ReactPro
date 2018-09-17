@@ -50408,6 +50408,21 @@ module.exports = {
 const React = require('react');
 
 const About = React.createClass({displayName: "About",
+  statics: {
+    willTransitionTo(transition, params, query, callback) {
+      if (!confirm('Are you sure you want to read a page that\'s this boring?')) {
+        transition.about();
+      } else {
+        callback();
+      }
+    },
+    willTransitionFrom(transition, component) {
+      if (!confirm('Are you sure you want to leave a page that\'s this exciting?')) {
+        transition.about();
+      }
+    }
+  },
+
   render() {
     return (
       React.createElement("div", {className: "jumbotron"}, 
@@ -50579,7 +50594,7 @@ const React = require('react');
 const Router = require('react-router');
 const routes = require('./routes');
 
-Router.run(routes, (Handler) => {
+Router.run(routes, Router.HistoryLocation, (Handler) => {
   React.render(React.createElement(Handler, null), document.getElementById('app'));
 });
 },{"./routes":208,"react":197,"react-router":28}],208:[function(require,module,exports){
@@ -50589,6 +50604,7 @@ const Router = require('react-router');
 const DefaultRoute = Router.DefaultRoute;
 const Route = Router.Route;
 const NotFoundRoute = Router.NotFoundRoute;
+const Redirect = Router.Redirect;
 const app = require('./components/app');
 const homePage = require('./components/homePage');
 const authorPage = require('./components/authors/authorPage');
@@ -50600,9 +50616,11 @@ const routes = (
     React.createElement(DefaultRoute, {handler: homePage}), 
     React.createElement(Route, {name: "authors", handler: authorPage}), 
     React.createElement(Route, {name: "about", handler: aboutPage}), 
-    React.createElement(NotFoundRoute, {name: "wrong", handler: notFoundPage})
+    React.createElement(NotFoundRoute, {name: "wrong", handler: notFoundPage}), 
+    React.createElement(Redirect, {from: "about-us", to: "about"}), 
+    React.createElement(Redirect, {from: "awthurs", to: "authors"}), 
+    React.createElement(Redirect, {from: "about/*", to: "about"})
   )
-
 );
 
 module.exports = routes;

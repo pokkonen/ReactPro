@@ -20,6 +20,8 @@ module.exports = {
       "no-underscore-dangle": 0,
       "max-len": 0,
       "no-console": 0,
-      "prefer-destructuring": 0
+      "prefer-destructuring": 0,
+      "no-alert": 0,
+      "no-restricted-globals": 0
     },
 };
