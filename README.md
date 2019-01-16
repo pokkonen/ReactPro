@@ -1,5 +1,3 @@
 React-projekti
 
-Flux
-Gulp
-jne
+Opens with command "gulp".
