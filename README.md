@@ -1,5 +1,3 @@
-React-projekti
+Simple React app using gulp and react-router. Pluralsight project.
 
-Flux
-Gulp
-jne
+Opens with command "gulp".
